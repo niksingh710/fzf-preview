@@ -115,6 +115,7 @@ We welcome contributions! 👐 If you'd like to improve `fzf-preview` or package
 
 ### 📅 **Planned Enhancements**
 - Add `fzf-preview` to **nixpkgs**. 🚀
+- Detect commands and show help in the preview window. ⌨️
 
 ---
 
