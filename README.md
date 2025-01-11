@@ -2,6 +2,8 @@
 
 `fzf-preview` is a lightweight and easy-to-understand script designed to enhance your `fzf` workflow with powerful previews. Whether you're working with symlinks pointing to the Nix store or need to preview different file formats, this script has you covered!
 
+![output](https://github.com/user-attachments/assets/c5f5b892-1794-4efd-9254-fe6569e918ea)
+
 ---
 
 ### ✨ **Features**
@@ -12,9 +14,6 @@
 - 📂 **Archive Support:** View contents of compressed files (e.g., zip, tar, etc.).
 - 🔧 **Extensive Format Support:** Preview text files, images, videos, documents, archives, and more!
 - ⚙️ **Easy Customization:** Tailor the script to your needs or contribute improvements via pull requests.
-
-|![image](https://github.com/niksingh710/cdots/assets/60490474/6ab40586-9978-4b8c-b944-f0343e180b6a) | ![output](https://github.com/user-attachments/assets/c5f5b892-1794-4efd-9254-fe6569e918ea) |
-| --- | --- |
 
 ---
 
@@ -82,6 +81,39 @@ nix-env -f default.nix -iA packageName
 This makes it easy to use, regardless of whether you're using flakes or not!
 
 ---
+
+### 📦 For Non-NixOS Users
+
+This repository provides a simple Bash script that can be used with FZF.
+
+#### Installation
+1. **Download** the `fzf-preview` script and place it in your `PATH`.
+   A recommended location is the `~/.local/bin` directory.
+
+2. **Add to PATH**: Update your `.bashrc` or `.zshrc` file:
+   ```bash
+   export PATH="$PATH:$HOME/.local/bin"
+   ```
+
+3. **Reload Configuration**:
+   ```bash
+   source ~/.bashrc  # or ~/.zshrc
+   ```
+
+4. **Install Dependencies**:
+   Make sure to manually install any required dependencies for the script. Ensure all tools it uses are available on your system.
+
+### Usage
+Once installed, you can use the script with FZF like this:
+```bash
+fzf --preview 'fzf-preview {}'
+```
+
+🎉 Enjoy a seamless FZF preview experience!
+
+---
+
+This version uses emojis to highlight key points and make the section more visually appealing.---
 
 ### 🛠️ **Dependencies**
 
