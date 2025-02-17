@@ -65,15 +65,16 @@ resolve_symlink() {
 # shellcheck disable=SC2120
 handle_image() {
   # Image handling can be done in multiple ways
-  # TODO: Have to add all other ways to handle images
-  # LIKE: Kitty uses icat to display images, other terminal have their way
-  # Current Focus is Based on sixel image support and the fallback option is to use symbols
 
   image=${1:-$LOCATION}
 
   case "$FZF_PREVIEW_IMAGE_HANDLER" in
   sixel)
     chafa -f sixel -s "${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}" "$image" --animate false
+    mediainfo "$image" # image related data appended after the image
+    ;;
+  kitty)
+    kitten icat --clear --transfer-mode=memory --unicode-placeholder --stdin=no --place="${FZF_PREVIEW_COLUMNS}x$((FZF_PREVIEW_LINES - 1))@0x0" "$image" | sed '$d' | sed $'$s/$/\e[m/'
     mediainfo "$image" # image related data appended after the image
     ;;
   symbols)
