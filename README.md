@@ -57,7 +57,7 @@ To run the `fzf-preview` script in Ctrl-T mode:
       fzf-preview = inputs.fzf-preview.packages.${pkgs.system}.default;
     in {
       enable = true;
-      fileWidgetOptions = binds ++ [ "--preview='${lib.getExe fzf-preview}'" ];
+      fileWidgetOptions = binds ++ [ "--preview='${lib.getExe fzf-preview}' {}" ];
     };
 }
 ```
