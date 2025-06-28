@@ -3,30 +3,41 @@
 pkgs.writeShellApplication {
   name = "fzf-preview";
   runtimeInputs = with pkgs;[
+    # Core utilities
+    bat
+    eza
     file
     jq
-    bat
-    glow
-    w3m
-    eza
-    openssl
+
+    # Compression and archiving
     atool
     p7zip
-    libcdio
-    odt2txt
+
+    # Document conversion and handling
     catdoc
     gnumeric
-    exiftool
+    odt2txt
+    poppler-utils
+
+    # Media tools
     chafa
-    mediainfo
+    exiftool
     ffmpegthumbnailer
-    poppler_utils
+    libcdio
+    mediainfo
+
+    # Presentation and viewers
+    glow
+    w3m
+
+    # Security
+    openssl
   ];
   text = lib.readFile ./fzf-preview;
 
   meta = with lib; {
     description = "This is a fzf preview script to preview files in fzf";
-    license = licenses.gpl3;
+    license = licenses.gpl3Only;
     platforms = platforms.unix;
     maintainers = with maintainers; [ niksingh710 ];
     mainProgram = "fzf-preview";
