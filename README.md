@@ -19,24 +19,15 @@
 
 ### 💻 **Installation**
 
-#### Using Nix with Flakes Enabled
-
-To get started with Nix, add the following to your Nix Flake:
-```nix
-{
-    inputs = {
-        fzf-preview.url = "github:niksingh710/fzf-preview";
-        fzf-preview.inputs.nixpkgs.follows = "nixpkgs";
-    };
-}
-```
+Now available as a Nix package! 🎉
 
 # Add it to your system packages:
 # configuration.nix
 ```nix
 {
-    home.packages = [ inputs.fzf-preview.packages.${pkgs.system}.default ]; # for home-manager
-    environment.systemPackages = [ inputs.fzf-preview.packages.${pkgs.system}.default ];
+    home.packages = [ pkgs.fzf-preview ];
+    # For NixOs/nix-darwin as systemwide package
+    environment.systemPackages = [ pkgs.fzf-preview ];
 }
 ```
 
@@ -44,7 +35,7 @@ To get started with Nix, add the following to your Nix Flake:
 
 If you want to test it without installing:
 ```sh
-nix shell "github:niksingh710/fzf-preview"
+nix shell "nixpkgs#fzf-preview"
 fzf --preview 'fzf-preview {}'
 ```
 
@@ -53,12 +44,10 @@ fzf --preview 'fzf-preview {}'
 To run the `fzf-preview` script in Ctrl-T mode:
 ```nix
 {
-    programs.fzf = let
-      fzf-preview = inputs.fzf-preview.packages.${pkgs.system}.default;
-    in {
+   programs.fzf = {
       enable = true;
-      fileWidgetOptions = binds ++ [ "--preview='${lib.getExe fzf-preview}' {}" ];
-    };
+      fileWidgetOptions = binds ++ [ "--preview='${lib.getExe pkgs.fzf-preview}' {}" ];
+   };
 }
 ```
 
