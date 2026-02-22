@@ -74,7 +74,7 @@ handle_image() {
     mediainfo "$image" # image related data appended after the image
     ;;
   kitty)
-    kitten icat --clear --transfer-mode=memory --unicode-placeholder --stdin=no --place="${FZF_PREVIEW_COLUMNS}x$((FZF_PREVIEW_LINES - 1))@0x0" "$image" | sed '$d' | sed $'$s/$/\e[m/'
+    kitten icat --clear --transfer-mode=stream --unicode-placeholder --stdin=no --place="${FZF_PREVIEW_COLUMNS}x$((FZF_PREVIEW_LINES - 1))@0x0" "$image" | sed '$d' | sed $'$s/$/\e[m/'
     mediainfo "$image" # image related data appended after the image
     ;;
   symbols)
